@@ -4,7 +4,16 @@
 <body>
     <%- include('./partials/nav.ejs') %>
 
-    <h1>Blogs page</h1>
+    <h1>All Blogs</h1>
+
+    <% if(blog.length > 0) { %>
+        <% blog.forEach(item => { %>
+            <h1><%= item.title %></h1>
+            <p><%= item.body %></p>
+        <% }) %>
+    <% } else { %>
+        <p>Tidak ada blog untuk di tampilkan</p>
+    <% } %>
 
     <%- include('./partials/footer.ejs') %>
 </body>
