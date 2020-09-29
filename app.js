@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
-const Blog = require('./models/blog')
+const Blog = require('./models/blog');
+const port = process.env.PORT || 3000
 
 const app = express();
 
@@ -15,7 +16,7 @@ const dbURI = 'mongodb+srv://walid:walid@cluster0.vt15h.mongodb.net/first-basic?
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
-    .then(result => app.listen(3000, () => console.log('port berjalan di http://localhost:3000')))
+    .then(result => app.listen(port, () => console.log(`port berjalan di http://localhost:${port}`)))
     .catch(err => console.log(err))
 
 // middleware & static files
