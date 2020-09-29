@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const sassMiddleware = require('node-sass-middleware');
+const path = require('path');
 const Blog = require('./models/blog')
 
 const app = express();
@@ -17,6 +19,13 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.log(err))
 
 // middleware & static files
+app.use(sassMiddleware({
+    /* Options */
+    src: path.join(__dirname, 'public'),
+    dest: path.join(__dirname, 'public'),
+    debug: true,
+    outputStyle: 'expanded'
+}));
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))

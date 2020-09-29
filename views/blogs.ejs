@@ -5,20 +5,23 @@
 <body>
     <%- include('./partials/nav.ejs') %>
 
-    <h1>All Blogs</h1>
+    <div class="blogs">
+        <h1>All Blogs</h1>
 
-    <% if(blog.length > 0) { %>
-    <% blog.forEach(item => { %>
+        <% if(blog.length > 0) { %>
+        <% blog.forEach(item => { %>
+        <div>
+            <a href="/blogs/<%= item._id %>">
+                <h3>Title : <%= item.title %></h3>
+                <p><%= item.snippet %></p>
+            </a>
+        </div>
 
-    <a href="/blogs/<%= item._id %>">
-        <h1><%= item.title %></h1>
-        <p><%= item.snippet %></p>
-    </a>
-
-    <% }) %>
-    <% } else { %>
-    <p>Tidak ada blog untuk di tampilkan</p>
-    <% } %>
+        <% }) %>
+        <% } else { %>
+        <p>Tidak ada blog untuk di tampilkan</p>
+        <% } %>
+    </div>
 
     <%- include('./partials/footer.ejs') %>
 </body>

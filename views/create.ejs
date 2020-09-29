@@ -5,8 +5,9 @@
 <body>
     <%- include('./partials/nav.ejs') %>
 
-    <h1>Create page</h1>
-    <div>
+    <div class="create">
+        <h1>Create page</h1>
+
         <form action="/blogs" method="POST">
             <label for="title">Blog title :</label>
             <input type="text" name="title" id="title" required>

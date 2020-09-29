@@ -1,7 +1,124 @@
+* {
+  color: #202020;
+}
+
 body {
-    background-color: aliceblue;
+  background-color: #e7e6d5;
+  margin: 0 10%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #202020;
+}
+
+nav h1 {
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+nav h1 a {
+  text-decoration: none;
+}
+
+nav h1 a:hover {
+  color: #a1a1a1;
+}
+
+nav ul {
+  display: flex;
+  align-self: center;
+}
+
+nav ul li {
+  margin-left: 20px;
+  list-style: none;
+  font-size: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: #a1a1a1;
+}
+
+.home {
+  text-align: center;
+}
+
+.blogs h1 {
+  text-align: center;
+}
+
+.blogs div {
+  border-left: 10px solid #92e01d;
+}
+
+.blogs div:hover {
+  background-color: #a1a1a1;
+}
+
+.blogs div a {
+  text-decoration: none;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details button {
+  background-color: orangered;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.about {
+  text-align: center;
+}
+
+.about p {
+  font-size: 20px;
+}
+
+.create {
+  text-align: center;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.error h1 {
+  color: orangered;
+}
+
+.error a {
+  text-decoration: none;
+}
+
+.error a:hover {
+  color: #a1a1a1;
 }
 
 footer {
-    text-align: center;
+  border-top: 2px solid #202020;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }
