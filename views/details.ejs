@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/header.ejs') %>
+<%- include('./partials/header.ejs') %>
+
 <body>
     <%- include('./partials/nav.ejs') %>
 
@@ -10,6 +11,31 @@
         <%= blog.body %>
     </p>
 
+    <a id="delete" data-doc="<%= blog._id %>">delete</a>
+
     <%- include('./partials/footer.ejs') %>
+
+    <script>
+        const hapus = document.querySelector('#delete');
+
+        hapus.addEventListener('click', function (e) {
+            const endpoint = `/blogs/${hapus.dataset.doc}`;
+
+            console.log(endpoint)
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+                .then(Response => Response.json())
+                .then(data => {
+                    console.log(data)
+                    
+                    // redirect(mengganti endpoint ke data.redirect)
+                    window.location.href = data.redirect
+                })
+                .catch(error => console.log(error))
+        })
+
+    </script>
 </body>
+
 </html>

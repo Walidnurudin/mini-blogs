@@ -18,52 +18,72 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // middleware & static files
 app.use(express.static('public'))
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
-// route
-app.get('/', (req, res) => {
-    res.render('home', { title: "home" })
-});
 
-// api
-app.get('/blogs', (req, res) => {
-    Blog.find().sort({ createdAt: -1 })
-    .then(result => {
-        res.render('blogs', { title: "blogs", blog: result })
-    })
-    .catch(err => console.log(err))
-});
+// ACTIONS
 
+// create
 app.post('/blogs', (req, res) => {
     const blog = new Blog(req.body)
 
     blog.save()
-    .then(result => {
-        res.redirect('/blogs')
-    })
-    .catch(err => {
-        console.log(err)
-    })
-})
-// end of api
-
-app.get('/blogs/:id', (req, res) => {
-    const id = req.params.id;
-
-    Blog.findById(id)
         .then(result => {
-            res.render('details', {blog: result, title: 'Detail page'});
+            res.redirect('/blogs')
         })
         .catch(err => {
             console.log(err)
         })
 })
 
+// delete
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+    .then(result => {
+        res.json({redirect: '/blogs'});
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
+// ROUTE
+// home
+app.get('/', (req, res) => {
+    res.render('home', { title: "home" })
+});
+
+// blog
+app.get('/blogs', (req, res) => {
+    Blog.find().sort({ createdAt: -1 })
+        .then(result => {
+            res.render('blogs', { title: "blogs", blog: result })
+        })
+        .catch(err => console.log(err))
+});
+
+// detail
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+
+    Blog.findById(id)
+        .then(result => {
+            res.render('details', { blog: result, title: 'Detail page' });
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
+
+// about
 app.get('/about', (req, res) => {
     res.render('about', { title: "about" })
 });
 
+// create
 app.get('/create', (req, res) => {
     res.render('create', { title: "create new blog" })
 });
@@ -72,3 +92,5 @@ app.get('/create', (req, res) => {
 app.use((req, res) => {
     res.render('404', { title: "404" })
 });
+
+
