@@ -25,7 +25,7 @@
         const hapus = document.querySelector('#delete');
 
         hapus.addEventListener('click', function (e) {
-            const endpoint = `/blogs/${hapus.dataset.doc}`;
+            const endpoint = `/api/blogs/${hapus.dataset.doc}`;
 
             console.log(endpoint)
             fetch(endpoint, {

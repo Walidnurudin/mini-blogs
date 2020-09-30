@@ -10,20 +10,7 @@ const blogPost = (req, res) => {
         .catch(err => {
             console.log(err)
         })
-};
-
-const blogDelete = (req, res) => {
-    const id = req.params.id;
-
-    Blog.findByIdAndDelete(id)
-        .then(result => {
-            res.json({ redirect: '/blogs' });
-        })
-        .catch(err => {
-            console.log(err);
-        })
 }
-
 const blogHome = (req, res) => {
     res.render('home', { title: "home" })
 }
@@ -56,6 +43,44 @@ const blogCreate = (req, res) => {
     res.render('create', { title: "create new blog" })
 }
 
+// API
+const blogDelete = (req, res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/blogs', res: result });
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+const getAllBlogs = (req, res) => {
+    Blog.find().sort({ createdAt: -1 })
+        .then(result => {
+            res.json(result)
+        })
+        .catch(err => console.log(err))
+}
+
+const post = (req, res) => {
+    const blog = new Blog({
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    })
+
+    blog.save()
+        .then(result => {
+            res.json(result)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+
 module.exports = {
     blogPost,
     blogDelete,
@@ -63,5 +88,7 @@ module.exports = {
     blogGet,
     blogDetail,
     blogAbout,
-    blogCreate
+    blogCreate,
+    getAllBlogs,
+    post
 }
