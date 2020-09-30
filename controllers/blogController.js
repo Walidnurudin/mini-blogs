@@ -65,11 +65,7 @@ const getAllBlogs = (req, res) => {
 }
 
 const post = (req, res) => {
-    const blog = new Blog({
-        title: req.body.title,
-        snippet: req.body.snippet,
-        body: req.body.body
-    })
+    const blog = new Blog(req.body)
 
     blog.save()
         .then(result => {
