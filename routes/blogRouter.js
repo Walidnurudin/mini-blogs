@@ -11,7 +11,8 @@ router.get('/create', blogController.blogCreate);
 
 // API
 router.delete('/api/blogs/:id', blogController.blogDelete);
-router.get('/api/blogs', blogController.getAllBlogs)
-router.post('/api/create', blogController.blogPost);
+router.put('/api/update/:id', blogController.BlogUpdate);
+router.get('/api/blogs', blogController.getAllBlogs);
+router.post('/api/create', blogController.Posting);
 
 module.exports = router;

@@ -3,8 +3,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
-const Blog = require('./models/blog');
 const blogRoutes = require('./routes/blogRouter');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000
 
 const app = express();
@@ -29,8 +29,14 @@ app.use(sassMiddleware({
     outputStyle: 'expanded'
 }));
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
+
 
 // routes
 app.use(blogRoutes)
@@ -39,5 +45,3 @@ app.use(blogRoutes)
 app.use((req, res) => {
     res.render('404', { title: "404" })
 });
-
-

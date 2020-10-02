@@ -64,10 +64,31 @@ const getAllBlogs = (req, res) => {
         .catch(err => console.log(err))
 }
 
-const post = (req, res) => {
-    const blog = new Blog(req.body)
+const Posting = (req, res) => {
+    const post = new Blog({
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    })
 
-    blog.save()
+    post.save()
+        .then(result => {
+            res.json(result)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+const BlogUpdate = (req, res) => {
+    const id = req.params.id;
+    const post = {
+        title: req.body.title,
+        snippet: req.body.snippet,
+        body: req.body.body
+    }
+
+    Blog.updateOne({_id: id}, post)
         .then(result => {
             res.json(result)
         })
@@ -86,5 +107,6 @@ module.exports = {
     blogAbout,
     blogCreate,
     getAllBlogs,
-    post
+    Posting,
+    BlogUpdate
 }
