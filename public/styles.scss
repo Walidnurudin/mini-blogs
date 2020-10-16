@@ -1,9 +1,12 @@
+html {
+    background-color: rgb(231, 230, 213);
+}
+
 * {
     color: rgb(32, 32, 32);
 }
 
 body {
-    background-color: rgb(231, 230, 213);
     margin: 0 10%;
 }
 
@@ -87,6 +90,30 @@ nav {
 
 .create {
     text-align: center;
+    form {
+        display: flex;
+        flex-direction: column;
+        margin: auto 20%;
+        label {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 5px;
+        }
+        textarea {
+            padding-bottom: 30px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgb(146, 224, 29);
+            &:hover {
+                background-color: seagreen;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .error {

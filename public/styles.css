@@ -1,9 +1,12 @@
+html {
+  background-color: #e7e6d5;
+}
+
 * {
   color: #202020;
 }
 
 body {
-  background-color: #e7e6d5;
   margin: 0 10%;
 }
 
@@ -96,6 +99,36 @@ nav ul li a:hover {
 
 .create {
   text-align: center;
+}
+
+.create form {
+  display: flex;
+  flex-direction: column;
+  margin: auto 20%;
+}
+
+.create form label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.create form input {
+  padding: 5px;
+}
+
+.create form textarea {
+  padding-bottom: 30px;
+}
+
+.create form button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #92e01d;
+}
+
+.create form button:hover {
+  background-color: seagreen;
+  cursor: pointer;
 }
 
 .error {
