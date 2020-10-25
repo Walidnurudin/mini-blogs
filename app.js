@@ -6,6 +6,7 @@ const path = require('path');
 const blogRoutes = require('./routes/blogRouter');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000
+require('dotenv').config();
 
 const app = express();
 
@@ -13,7 +14,7 @@ const app = express();
 app.set('view engine', 'ejs')
 
 // connect mongodb
-const dbURI = 'mongodb+srv://walid:walid@cluster0.vt15h.mongodb.net/first-basic?retryWrites=true&w=majority';
+const dbURI = process.env.DB_URI;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
