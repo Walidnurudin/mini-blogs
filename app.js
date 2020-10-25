@@ -14,7 +14,7 @@ const app = express();
 app.set('view engine', 'ejs')
 
 // connect mongodb
-const dbURI = process.env.DB_URI;
+const dbURI = `${process.env.DB_URI}`;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
