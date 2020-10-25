@@ -6,15 +6,15 @@ const path = require('path');
 const blogRoutes = require('./routes/blogRouter');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000
-require('dotenv').config();
 
 const app = express();
 
 // set view engine
 app.set('view engine', 'ejs')
 
-// connect mongodb
-const dbURI = `${process.env.DB_URI}`;
+// connect mongodb with dotenv
+require('dotenv').config();
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vt15h.mongodb.net/first-basic?retryWrites=true&w=majority`;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
