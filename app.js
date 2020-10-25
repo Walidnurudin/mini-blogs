@@ -14,7 +14,7 @@ app.set('view engine', 'ejs')
 
 // connect mongodb with dotenv
 require('dotenv').config();
-const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vt15h.mongodb.net/first-basic?authMechanism=SCRAM-SHA-1`;
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.vt15h.mongodb.net/first-basic?authMechanism=MONGODB-CR`;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
