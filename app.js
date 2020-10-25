@@ -15,10 +15,7 @@ const app = express();
 app.set('view engine', 'ejs')
 
 // connect mongodb with dotenv
-const name = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
-
-const dbURI = `mongodb+srv://${name}:${password}@cluster0.vt15h.mongodb.net/first-basic?retryWrites=true&w=majority`;
+const dbURI = process.env.DB;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     // jika connect ke db, maka app berjalan
