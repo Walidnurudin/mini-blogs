@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const sassMiddleware = require('node-sass-middleware');
 const path = require('path');
+const favicon = require('serve-favicon');
 const blogRoutes = require('./routes/blogRouter');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.log(err))
 
 // middleware & static files
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(sassMiddleware({
     /* Options */
     src: path.join(__dirname, 'public'),
