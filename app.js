@@ -7,7 +7,7 @@ const favicon = require('serve-favicon');
 const blogRoutes = require('./routes/blogRouter');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-require('dotenv').config({path: './.env'});
+require('dotenv').config();
 
 
 const app = express();
